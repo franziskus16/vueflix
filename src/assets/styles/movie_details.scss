@@ -1,0 +1,82 @@
+
+h1, h2, p {
+    color:white;
+}
+h1 {
+    font-size:45px;
+    margin-top: .8rem;
+}
+p {
+    font-size:16px;
+}
+
+.movie-wrapper {
+    background-image:linear-gradient(to right, rgb(4 4 4) calc(50vw - 170px - 340px), rgb(39 39 39 / 84%) 50%, rgb(72 70 70 / 84%) 100%);
+    padding-right: 4rem;
+    padding-left: 4rem;
+    .section-movie {
+        display: flex;
+        justify-content: left;
+        flex-wrap: wrap;
+        max-width: 1400px;
+        .movie-background {
+            position: relative;
+            background-size: auto;
+            background-position: left calc((50vw - 170px) - 340px) top;
+            background-repeat: no-repeat;
+            width: 100%;
+            color: white;
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.7);
+              }
+        }
+        .movie-content {
+            padding:1rem;
+            display: flex;
+            align-items: flex-end;
+            padding-right: 4rem;
+            padding-left: 4rem;
+            margin-bottom: 2rem;
+            z-index: 1;
+            .movie-poster {
+              width: 200px;
+              padding:1rem;
+            }
+            .movie-details {
+                padding: 1rem;
+                .info-vote {
+                    display: inline;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    padding: 10px;
+                    font-size: 18px;
+                    color: white;
+                    font-weight: 900;
+                  }
+            }
+        }
+    }
+}
+.bg-details {
+    padding: 2rem;
+    background-color: #242432;
+    border-radius: 15px;
+}
+.grid-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-right: 4rem;
+    padding-left: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    .movie-overview, .movie-cast {
+        h2 {
+            margin-bottom: 1rem;
+        }
+    }
+}
+

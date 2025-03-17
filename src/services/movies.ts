@@ -14,7 +14,15 @@ export const getPopularMovies = async () => {
     const response = await apiClient.get("/movie/popular");
     return response.data.results;
   } catch (error) {
-    console.error("Error al obtener películas populares:", error);
+    throw error;
+  }
+};
+
+export const getMovieCertifications = async (id: number) => {
+  try {
+    const response = await apiClient.get(`/movie/${id}/release_dates`);
+    return response.data; 
+  } catch (error) {
     throw error;
   }
 };
@@ -28,7 +36,7 @@ export const getMovieById = async (id: number) => {
   }
 };
 
-export const getMovieCreditsId = async (id: number) => {
+export const getMovieCredits = async (id: number) => {
   try {
     const response = await apiClient.get(`movie/${id}/credits`);
     return response.data;

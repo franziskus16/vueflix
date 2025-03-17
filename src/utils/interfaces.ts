@@ -53,12 +53,16 @@ export interface Comment {
   export interface MovieState {
     movies: Movie[];
     movie: Movie | null;
-    credits: Credit[];
+    credits: {
+      directors: string[];
+      actors: string[];
+    };
     similarMovies: SimilarMovie[];
     trendingMovies: Movie[];
     genres: Genres[];
     loading: boolean;
     error: string | null;
+    certifications: string | null;
     lastFetch: number;
   }
   

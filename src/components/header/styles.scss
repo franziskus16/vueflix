@@ -1,7 +1,7 @@
 @import "@/assets/styles/_variables.scss";
 
 .header {
-  background: -webkit-linear-gradient(315deg,#42d392 25%,#647eff);
+  background: black;
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,7 @@
     color: $dark-text;
     &-item {
       font-weight: bold;
-      font-size: 1.25rem;
+      font-size: 2rem;
       color: $dark-text;
       text-decoration: none;
       &:hover {
@@ -42,10 +42,11 @@
     }
 
     &-item {
-      font-size: 0.875rem;
+      font-size: 1rem;
       color: $dark-text;
       text-decoration: none;
       padding: 0 1rem;
+      font-weight: 600;
       &:hover {
         color: $accent;
       }
@@ -91,13 +92,18 @@
     color: $dark-accent;
   }
 
-  /* Sección de usuario y favoritos */
+
   &__user-actions {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    @media (max-width: 768px) {
-      display: none;
+    .header__nav-item {
+      background-color: $accent;
+      border: 1px solid $accent;
+      padding: .5rem 1.2rem;
+      color: black;
+      border-radius: 8px;
+      font-weight: 600;
     }
   }
 

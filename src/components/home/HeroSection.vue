@@ -1,8 +1,15 @@
 <template>
     <section class="hero">
-      <swiper
+      <div class="hero-image">
+        <div class="hero-text">
+          <h1>Unlimited Movies, TV shows, and more</h1>
+          <p>Watch anywhere. Cancel Anytime</p>
+          <button>Get Started</button>
+        </div>
+      </div>
+      <!-- <swiper
         :slides-per-view="1"
-        :loop="true"
+        :loop="movies.length > 1"
         :pagination="{ clickable: true }"
         :navigation="true"
       >
@@ -17,7 +24,7 @@
             <p>{{ movie.overview }}</p>
           </div>
         </swiper-slide>
-      </swiper>
+      </swiper> -->
     </section>
   </template>
   

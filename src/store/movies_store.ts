@@ -1,7 +1,7 @@
-//import { defineStore } from "pinia";
+import { defineStore } from "pinia";
 import {
   getMovieById,
-  getMovieCreditsId,
+  getMovieCredits,
   getMovies,
   getMoviesGenres,
   getMovieSimilarId,
@@ -13,13 +13,17 @@ export const useMoviesStore = defineStore("movies", {
   state: (): MovieState => ({
     movies: [],
     movie: null,
-    credits: [],
+    credits: {
+      directors: [],
+      actors: [],
+    },
     similarMovies: [],
     trendingMovies: [],
     genres: [],
     loading: false,
     error: null,
     lastFetch: 0,
+    certifications: null,
   }),
 
   actions: {
@@ -47,6 +51,7 @@ export const useMoviesStore = defineStore("movies", {
     async fetchMovieById(id: number) {
       this.loading = true;
       this.error = null;
+      this.movie = null;
 
       try {
         const movie = await getMovieById(id);
@@ -57,17 +62,13 @@ export const useMoviesStore = defineStore("movies", {
         this.loading = false;
       }
     },
-    async fetchMovieCreditsId(id: number) {
-      this.loading = true;
-      this.error = null;
-
+    async fetchMovieCredits(id: number) {
       try {
-        const credits = await getMovieCreditsId(id);
-        this.credits = credits?.cast?.slice(0, 10);
+        const credits = await getMovieCredits(id); // Función que hace la llamada a la API
+        this.credits.directors = credits.crew.filter((member: any) => member.job === 'Director').map((director: any) => director.name);
+        this.credits.actors = credits.cast.slice(0, 5).map((actor: any) => actor.name); // Los primeros 5 actores
       } catch (err) {
-        this.error = `Error loading movie with id ${id}`;
-      } finally {
-        this.loading = false;
+        console.error("Error al cargar los créditos de la película:", err);
       }
     },
     async fetchSimilarMovies(id: number) {

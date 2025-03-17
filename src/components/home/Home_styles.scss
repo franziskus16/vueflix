@@ -1,139 +1,346 @@
 @import "@/assets/styles/_variables.scss";
 
-//home view styles
 .home {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-
-//hero component styles
 .hero {
-  width: 100%;
-  min-height: 40vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background:-webkit-linear-gradient(315deg,#42d392 25%,#647eff);
-  color: $dark-text;
-  padding: $spacing-medium;
-
-  @media (max-width: 768px) {
-    width: auto;
+  .hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://cdn.celluloidjunkie.com/wp-content/uploads/2021/04/30144535/Paper-vs-Digital-Movie-Posters-Featured.jpg");
+    height: 60vh;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &:before {
+    content    : "";
+    background : #000000; 
+    position   : absolute;
+    width      : 100%;
+    height     : 100%;
+    opacity    : 0.8; 
   }
+    .hero-text {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
 
-  &__content {
-    max-width: 600px;
-  }
-
-  &__title {
-    font-size: 2.5rem;
-    margin-bottom: $spacing-small;
-  }
-
-  &__subtitle {
-    font-size: 1.2rem;
-    margin-bottom: $spacing-medium;
-  }
-
-  &__button {
-    background: $accent;
-    color: $dark-bg;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-
-    &:hover {
-      background: $dark-accent, 10%;
+      h1{
+        margin: 0;
+        display: inline;
+        color: #ffffff;
+        font-size: 4rem;
+        opacity: 0.8;
+        line-height: 120px;
+      }
+      p{
+        font-size: 2rem;
+        color: #ffffff;
+        opacity: 0.8;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 18px 32px;
+        font-size: 22px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        margin: 8px 15px;
+        transition: 0.2s ease;
+        background: #42d392;
+        color: rgb(8 8 8 / 76%);
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+        box-shadow: rgba(110, 110, 119, 0.452) 0px 8px 30px 0px;
+        border-radius: 10px;
+        &:before {
+          width: 200%;
+          height: 200%;
+          content: '';
+          transform: rotate(-45deg);
+          position: absolute;
+          top: -10%;
+          left: -180%;
+          background: rgba(119, 129, 238, 0.2);
+          transition: 0.3s ease-in-out;
+        }
+        &:hover {
+          &:before {
+            left:55%;
+          }
+        }
+      }
     }
   }
 }
 
-.hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+// .hero {
+//   width: 100%;
+//   min-height: 40vh;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
+//   color: $dark-text;
+//   padding: $spacing-medium;
+
+//   @media (max-width: 768px) {
+//     width: auto;
+//   }
+
+//   &__content {
+//     max-width: 600px;
+//   }
+
+//   &__title {
+//     font-size: 2.5rem;
+//     margin-bottom: $spacing-small;
+//   }
+
+//   &__subtitle {
+//     font-size: 1.2rem;
+//     margin-bottom: $spacing-medium;
+//   }
+
+//   &__button {
+//     background: $accent;
+//     color: $dark-bg;
+//     border: none;
+//     padding: 0.75rem 1.5rem;
+//     font-size: 1rem;
+//     font-weight: bold;
+//     cursor: pointer;
+//     border-radius: 5px;
+//     transition: background 0.3s ease;
+
+//     &:hover {
+//       background: $dark-accent, 10%;
+//     }
+//   }
+//  }
+
+// .hero-image {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
   
-  .overlay {
+.overlay {
     position: absolute;
     bottom: 10%;
     left: 5%;
     color: white;
     z-index: 10;
   }
-
-//  Featured component styles
-.featured {
-  text-align: center;
-  padding: 2rem 0;
-  &__title {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #ffffffdf;
-    font-weight: normal;
-    @media (max-width: 768px) {
-      font-size: 1.8rem;
+  .movie-main {
+    padding: 2rem;
+    h1 {
+      font-size: 26px;
+      color:white;
+      padding: 2rem;
     }
-  }
-
-  &__grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-    &-trending {
-      overflow: hidden;
-      border-radius: 8px;
-    }
-  }
-
-  &__genres {
-    padding: 40px 20px;
-    margin: 40px 20px;
-
-    &-grid {
+    .wrapper-movies {
+      display: flex;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-
-      @media (max-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      &-pill {
-        padding: 10px 16px;
-        text-align: center;
-        font-size: 16px;
-        font-weight: 100;
-        border-radius: 10px;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: #ffffffdf;
-        text-decoration: underline;
-        border: 1px solid #ffe10065;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      .movie-card {
+        width: 250px;
+        height: 400px;
+        border-radius: 15px;
+        padding: 1.5rem;
+        background: white;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        transition: 0.4s ease-out;
+        box-shadow: 0px 7px 10px rgba(black, 0.5);
+        &:hover {
+          transform: translateY(20px);
+          &:before{
+            opacity: 1;
+          }
+          .info {
+            opacity: 1;
+            transform: translateY(0px);
+          }
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 15px;
+          background: rgba(black, 0.6);
+          z-index: 2;
+          transition: 0.5s;
+          opacity: 0;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 15px;
+        }
+        .info {
+          position: relative;
+          z-index: 3;
+          color: white;
+          opacity: 0;
+          transform: translateY(30px);
+          transition: 0.5s;
+          .info-vote {
+            display: inline;
+            border: 2px solid white;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 18px;
+          }
+          h2 {
+            margin-top: 15px;
+            line-height: 30px;
+          }
+          .info-genre {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 5px;
+          }
+          p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 14px;
+            margin-top: 8px;
+            margin-bottom: 1.5rem;
+            line-height: 18px;
+          }
+          .movie-link {
+            color:white;
+            text-decoration: none;
+          }
+        }
       }
     }
   }
 
-  &__image {
-    width: 100%;
-    border-radius: 8px;
-    @media (max-width: 768px) {
-      width: 80%;
+.series-main {
+  padding: 2rem;
+  h1 {
+    font-size: 26px;
+    color:white;
+    padding: 2rem;
+  }
+  .wrapper-series {
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    .serie-card {
+      width: 250px;
+      height: 400px;
+      border-radius: 15px;
+      padding: 1.5rem;
+      background: white;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      transition: 0.4s ease-out;
+      box-shadow: 0px 7px 10px rgba(black, 0.5);
+      &:hover {
+        transform: translateY(20px);
+        &:before{
+          opacity: 1;
+        }
+        .info {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+        background: rgba(black, 0.6);
+        z-index: 2;
+        transition: 0.5s;
+        opacity: 0;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 15px;
+      }
+      .info {
+        position: relative;
+        z-index: 3;
+        color: white;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 0.5s;
+        .info-vote {
+          display: inline;
+          border: 2px solid white;
+          border-radius: 5px;
+          padding: 5px;
+          font-size: 18px;
+        }
+        h2 {
+          margin-top: 15px;
+          line-height: 30px;
+        }
+        .info-genre {
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: 600;
+          border-radius: 5px;
+        }
+        p {
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 14px;
+          margin-top: 8px;
+          margin-bottom: 1.5rem;
+          line-height: 18px;
+        }
+        .serie-link {
+          color:white;
+          text-decoration: none;
+        }
+      }
     }
   }
 }
-
-// SubscriptionsPlans component styles
 .plans {
   display: flex;
   gap: 20px;

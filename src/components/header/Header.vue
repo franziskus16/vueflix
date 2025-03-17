@@ -16,11 +16,7 @@
     </div>
 
     <div class="header__user-actions">
-      <router-link class="header__nav-item" to="/">FAVORITES</router-link>
-      <router-link class="header__nav-item" to="/">MY LIST</router-link>
-      <div class="header__user-icon">
-        <font-awesome-icon icon="user" />
-      </div>
+      <router-link class="header__nav-item" to="/">Subscribe</router-link>
     </div>
   </header>
 </template>
