@@ -1,4 +1,4 @@
-@import "@/assets/styles/_variables.scss";
+@use "@/assets/styles/variables" as *;
 
 .footer {
   background-color: transparent;
@@ -65,7 +65,7 @@
     transition: color 0.3s ease;
 
     &:hover {
-      color: white;
+      color: $light-text;
     }
   }
 

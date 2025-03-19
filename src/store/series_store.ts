@@ -1,8 +1,8 @@
-import { defineStore } from "pinia";
-import { getSeries } from "../services/series";
-import type { SerieState } from "../utils/interfaces";
+import { defineStore } from 'pinia'
+import { getSeries } from '../services/series'
+import type { SerieState } from '../utils/interfaces'
 
-export const useSeriesStore = defineStore("series", {
+export const useSeriesStore = defineStore('series', {
   state: (): SerieState => ({
     series: [],
     loading: false,
@@ -12,27 +12,27 @@ export const useSeriesStore = defineStore("series", {
 
   actions: {
     async fetchSeries() {
-      const CACHE_TIME = 5 * 60 * 1000;
-      const now = Date.now();
+      const CACHE_TIME = 5 * 60 * 1000
+      const now = Date.now()
 
-      if (this.series.length > 0) return;
+      if (this.series.length > 0) return
 
       if (this.series.length > 0 && now - this.lastFetch < CACHE_TIME) {
-        return;
+        return
       }
 
-      this.loading = true;
-      this.error = null;
+      this.loading = true
+      this.error = null
 
       try {
-        const series = await getSeries();
-        this.series = series;
-        this.lastFetch = now;
+        const series = await getSeries()
+        this.series = series
+        this.lastFetch = now
       } catch (err) {
-        this.error = "Error loading series";
+        this.error = 'Error loading series'
       } finally {
-        this.loading = false;
+        this.loading = false
       }
     },
   },
-});
+})

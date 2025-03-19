@@ -1,4 +1,4 @@
-@import "@/assets/styles/_variables.scss";
+@use "@/assets/styles/variables" as *;
 
 .header {
   background: black;
@@ -7,7 +7,6 @@
   justify-content: space-between;
   align-items: center;
 
-  /* Sección del logo y la navegación */
   &__logo-nav {
     display: flex;
     align-items: center;
@@ -25,10 +24,13 @@
         color: $dark-accent;
       }
     }
+    @media (max-width: 768px) {
+      order:2;
+      margin-left: 1rem;
+    }
   }
 
   &__nav {
-    // background: yellowgreen;
     width: 100%;
     padding: 0 3rem;
     display: flex;
@@ -39,7 +41,19 @@
       right: 1rem;
       display: flex;
       justify-content: space-around;
+      top: 0;
+      z-index: 999;
+      left: 0;
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #333;
+      padding: 10px 0;
+      &.is-open {
+        display: flex;
+      }
     }
+    
 
     &-item {
       font-size: 1rem;
@@ -53,45 +67,13 @@
       @media (max-width: 768px) {
         padding: 1rem 0;
         margin: 1rem 0;
+        text-align: center;
         &:hover {
           color: $accent;
         }
       }
     }
   }
-
-  /* Sección de búsqueda */
-  &__search-container {
-    flex-grow: 1;
-    margin: 0 1rem;
-    max-width: 36rem;
-    position: relative;
-
-    @media (max-width: 768px) {
-      display: none;
-    }
-  }
-
-  &__search-input {
-    width: 100%;
-    background-color: $dark-secondary;
-    border-radius: 9999px;
-    padding: 0.25rem 1rem 0.25rem 2.5rem;
-    font-size: 0.875rem;
-    border: 1px solid $dark-border;
-  }
-
-  &__search-icon {
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1rem;
-    height: 1rem;
-    margin-bottom: 2px;
-    color: $dark-accent;
-  }
-
 
   &__user-actions {
     display: flex;
@@ -107,22 +89,24 @@
     }
   }
 
-  &__user-actions-item {
-    font-size: 0.875rem;
-    color: $dark-text;
-    text-decoration: none;
-    &:hover {
-      color: $accent;
-    }
-  }
-
-  &__user-icon {
-    width: 2rem;
-    height: 2rem;
-    background-color: $dark-accent;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    width: 30px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    @media (max-width: 768px) {
+      display: flex;
+    }
+    &__line {
+      width: 30px;
+      height: 4px;
+      background-color: $light-text;
+      border-radius: 5px;
+    }
   }
 }

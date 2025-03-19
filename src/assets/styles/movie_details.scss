@@ -1,6 +1,7 @@
+@use "@/assets/styles/variables" as *;
 
 h1, h2, p {
-    color:white;
+    color:$light-text;
 }
 h1 {
     font-size:45px;
@@ -12,35 +13,39 @@ p {
 
 .movie-wrapper {
     background-image:linear-gradient(to right, rgb(4 4 4) calc(50vw - 170px - 340px), rgb(39 39 39 / 84%) 50%, rgb(72 70 70 / 84%) 100%);
-    padding-right: 4rem;
-    padding-left: 4rem;
-    .section-movie {
-        display: flex;
-        justify-content: left;
-        flex-wrap: wrap;
-        max-width: 1400px;
         .movie-background {
+            height: 45vh;
             position: relative;
-            background-size: auto;
-            background-position: left calc((50vw - 170px) - 340px) top;
+            background-position: center;
             background-repeat: no-repeat;
-            width: 100%;
-            color: white;
-            &::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.7);
-              }
+            background-size: cover;
+                &:before {
+                content    : "";
+                background : #000000; 
+                position   : absolute;
+                width      : 100%;
+                height     : 100%;
+                opacity    : 0.8; 
+            }
+            @media (max-width: 768px) {
+                height: 100%;
+                padding-bottom: 2rem;
+            }
         }
         .movie-content {
-            padding:1rem;
+            position: relative;
+            padding: 1rem;
             display: flex;
             align-items: flex-end;
             padding-right: 4rem;
             padding-left: 4rem;
-            margin-bottom: 2rem;
             z-index: 1;
+            @media (max-width: 768px) {
+                display: block;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                
+            }
             .movie-poster {
               width: 200px;
               padding:1rem;
@@ -49,22 +54,52 @@ p {
                 padding: 1rem;
                 .info-vote {
                     display: inline;
-                    border: 2px solid white;
+                    border: 2px solid $light-text;
                     border-radius: 5px;
                     padding: 10px;
                     font-size: 18px;
-                    color: white;
+                    color: $light-text;
                     font-weight: 900;
+                  }
+                  h1 {
+                    @media (max-width: 768px) {
+                        line-height: 120%;
+                        font-size: 28px;
+                    }
+                  }
+                  h2 {
+                    @media (max-width: 768px) {
+                        font-size: 18px;
+                    }
                   }
             }
         }
-    }
+        .section-button {
+            display: flex;
+            padding-left: 4rem;
+            padding-right: 4rem;
+            justify-content: flex-start;
+            @media (max-width: 768px) {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            .btn-subscription {
+                padding: 15px 32px;
+                span {
+                    margin-left: 10px;
+                }
+            }
+            
+        }
+    
 }
+
 .bg-details {
     padding: 2rem;
     background-color: #242432;
     border-radius: 15px;
 }
+
 .grid-details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -73,10 +108,22 @@ p {
     padding-left: 4rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-    .movie-overview, .movie-cast {
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+    .movie-overview, 
+    .movie-cast, 
+    .extra-details{
         h2 {
             margin-bottom: 1rem;
         }
+        p {
+            font-size:18px;
+            font-weight: 700;
+        }
+        
     }
 }
 
