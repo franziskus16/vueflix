@@ -9,11 +9,6 @@ const router = createRouter({
       component: () => import('../views/Home.vue'),
     },
     {
-      path: '/subscription',
-      name: 'subscription',
-      component: () => import('../views/SubscriptionSection.vue'),
-    },
-    {
       path: '/movies',
       name: 'movies',
       component: () => import('../views/MoviesSection.vue'),
@@ -34,6 +29,11 @@ const router = createRouter({
       name: 'serie',
       component: () => import('../views/SerieDetails.vue'),
       props: true,
+    },
+    {
+      path: '/subscription',
+      name: 'subscription',
+      component: () => import('../views/SubscriptionDetails.vue'),
     },
     {
       path: '/:pathMatch(.*)*',
