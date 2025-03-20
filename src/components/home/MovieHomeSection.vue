@@ -12,7 +12,7 @@
           :alt="movie.title"
         />
         <div class="info">
-          <div class="info-vote">{{ movie.vote_average }}</div>
+          <div class="info-vote">{{ movie.vote_average.toFixed(1) }}</div>
           <router-link :to="`/movie/${movie.id}`" class="movie-link">
             <h2>{{ movie.title }}</h2>
             <div class="info-genre">{{ getGenresNames(movie.genre_ids) }}</div>
@@ -26,23 +26,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { getPopularMovies, getMoviesGenres } from '../../services/movies'
+import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useMoviesStore } from '../../store/movies_store'
 
-const movies = ref([])
-const genres = ref<any[]>([])
+const store = useMoviesStore()
+
+const { movies, genres } = storeToRefs(store)
 
 onMounted(async () => {
-  try {
-    const [moviesData, genresData] = await Promise.all([
-      getPopularMovies(),
-      getMoviesGenres(),
-    ])
-
-    movies.value = moviesData
-    genres.value = genresData
-  } catch (error) {
-    console.error('Error loading movie data:', error)
+  if (!movies.value.length) {
+    await store.fetchMovies()
+  }
+  if (!genres.value.length) {
+    await store.fetchMoviesGenres()
   }
 })
 

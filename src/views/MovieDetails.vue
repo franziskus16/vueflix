@@ -63,10 +63,6 @@
           v-for="similar in similarMovies"
           :key="similar.id"
         >
-          <img
-            :src="getMovieImageUrl(similar.poster_path)"
-            :alt="similar.title"
-          />
           <div class="page-content__actors-item-overlay">
             <p class="page-content__actors-item-name">{{ similar.title }}</p>
           </div>

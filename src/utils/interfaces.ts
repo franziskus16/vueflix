@@ -10,13 +10,19 @@ export interface Movie {
   backdrop_path: string
   comments: string
   homepage: string
-  genres: { id: number; name: string }[]
+  genre_ids: number[]
   overview: string
   poster_path: string
   popularity: number
   tagline: string
   title: string
   vote_count: number
+  vote_average: number
+  release_date: number
+  runtime: number
+  origin_country: string
+  original_language: string
+  original_title: string
 }
 
 export interface Serie {
@@ -25,6 +31,7 @@ export interface Serie {
   overview: string
   poster_path: string
   title: string
+  vote_average: number
 }
 
 export interface Credit {

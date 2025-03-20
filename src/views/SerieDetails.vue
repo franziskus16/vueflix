@@ -5,8 +5,7 @@
         <div
           class="serie-background"
           :style="{
-            backgroundImage:
-              'url(https://image.tmdb.org/t/p/w500' + serie.backdrop_path + ')',
+            backgroundImage: `url(${serie.backdrop_path ? 'https://image.tmdb.org/t/p/w500' + serie.backdrop_path : '/images/default-background.png'})`,
           }"
         >
           <div class="serie-content">

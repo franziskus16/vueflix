@@ -9,8 +9,12 @@
       <div v-for="serie in series" :key="serie.id" class="list-card">
         <h2 class="movie-title">{{ serie.name }}</h2>
         <img
-          :src="'https://image.tmdb.org/t/p/w500' + serie.backdrop_path"
-          :alt="serie.name"
+          :src="
+            serie.backdrop_path
+              ? 'https://image.tmdb.org/t/p/w500' + serie.backdrop_path
+              : '/images/default-poster.png'
+          "
+          :alt="serie.title"
         />
         <div class="info">
           <router-link :to="`/serie/${serie.id}`" class="serie-link">
